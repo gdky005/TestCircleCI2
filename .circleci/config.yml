@@ -28,7 +28,7 @@ jobs:
             destPath="$outName"
             echo "apk 的原始地址是：${apkPath}， apk 的目标地址是：${destPath}"
             sudo mv ${apkPath} ${destPath}
-            APK_PATH="$CIRCLE_WORKING_DIRECTORY/$destPath"
+            APK_PATH="$destPath"
             ls
             echo $APK_PATH>APK_NAME.txt
       - run:
