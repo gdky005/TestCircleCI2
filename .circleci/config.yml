@@ -10,8 +10,8 @@ jobs:
       JVM_OPTS: -Xmx3200m
     steps:
       - checkout
-      - licenses:
-          - 'android-sdk-license-.+'
+#      - licenses:
+#          - 'android-sdk-license-.+'
       - before_install:
           - yes | sdkmanager "platforms;android-28"
 #      - restore_cache:
