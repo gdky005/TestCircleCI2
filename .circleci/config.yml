@@ -41,9 +41,9 @@ jobs:
                                    -F "_api_key=808950acaea5f1c000852ad42e87fe0e" \
                                    http://www.pgyer.com/apiv1/app/upload`
             echo "蒲公英返回：$pgyerReponse"
-            pgyerReponseJson=`$pgyerReponse  | jq .`
+            pgyerReponseJson=`$pgyerReponse | jq .`
             echo "蒲公英格式化的 Json 是：$pgyerReponseJson"
-            pgyerPath=`$pgyerReponseJson  | jq -r '.data.appShortcutUrl'`
+            pgyerPath=`$pgyerReponseJson | jq -r '.data.appShortcutUrl'`
             echo "蒲公英短地址是：$pgyerPath"
 
             pgyerPath="https://www.pgyer.com/$pgyerPath"
