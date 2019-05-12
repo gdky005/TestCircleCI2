@@ -16,11 +16,11 @@ jobs:
 #          name: Download Dependencies
 #          command: ./gradlew androidDependencies
       - run:
+          name: 当前目录
+          command: pwd
+      - run:
           name: Build Apk
-          command:
-            - pwd
-            - ./gradlew build
-            - pwd
+          command: ./gradlew build
       - save_cache:
           paths:
             - ~/.gradle
