@@ -27,7 +27,7 @@ jobs:
             apkPath="$CIRCLE_WORKING_DIRECTORY/app/build/outputs/apk/debug/app-debug.apk"
             destPath="$CIRCLE_WORKING_DIRECTORY/$outName"
             echo "apk 的原始地址是：${apkPath}， apk 的目标地址是：${destPath}"
-            mv ${apkPath} ${destPath}
+            cp ${apkPath} ${destPath}
             ls
 
       - save_cache:
