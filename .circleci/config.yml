@@ -6,26 +6,33 @@ jobs:
     working_directory: ~/code
     docker:
       - image: circleci/android:api-28-alpha
-#    environment:
-#      JVM_OPTS: -Xmx3200m
+    environment:
+      JVM_OPTS: -Xmx3200m
     steps:
-#      - checkout
-#      - restore_cache:
-#          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - checkout
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 #      - run:
 #          name: Download Dependencies
 #          command: ./gradlew androidDependencies
       - run:
           name: Build Apk
           command: |
+            ./gradlew assembleDebug
             pwd
             nowTime=$(date +"%Y%m%d%H%M%S")
             outName="${CIRCLE_PROJECT_REPONAME}_${CIRCLE_BUILD_NUM}_${nowTime}.apk"
             echo "文件的输出名字是：${outName}"
-#      - save_cache:
-#          paths:
-#            - ~/.gradle
-#          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+            apkPath="$CIRCLE_WORKING_DIRECTORY/app/build/outputs/apk/debug/app-debug.apk"
+            destPath="$CIRCLE_WORKING_DIRECTORY/$outName"
+            echo "apk 的原始地址是：${apkPath}， apk 的目标地址是：${destPath}"
+            mv ${apkPath} ${destPath}
+            ls
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 #      - run:
 #          name: Run Tests
 #          command: ./gradlew lint test
