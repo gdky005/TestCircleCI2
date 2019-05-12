@@ -24,8 +24,8 @@ jobs:
             nowTime=$(date +"%Y%m%d%H%M%S")
             outName="${CIRCLE_PROJECT_REPONAME}_${CIRCLE_BUILD_NUM}_${nowTime}.apk"
             echo "文件的输出名字是：${outName}"
-            apkPath="$CIRCLE_WORKING_DIRECTORY/app/build/outputs/apk/debug/app-debug.apk"
-            destPath="$CIRCLE_WORKING_DIRECTORY/$outName"
+            apkPath="app/build/outputs/apk/debug/app-debug.apk"
+            destPath="$outName"
             echo "apk 的原始地址是：${apkPath}， apk 的目标地址是：${destPath}"
             sudo mv ${apkPath} ${destPath}
             ls
