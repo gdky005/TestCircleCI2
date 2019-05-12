@@ -19,7 +19,6 @@ jobs:
           name: Build Apk
           command: |
             pwd
-#            ./gradlew assembleDebug
             nowTime="$(date +"%Y%m%d%H%M%S")"
             outName="${CIRCLE_PROJECT_REPONAME}_${CIRCLE_BUILD_NUM}_${nowTime}.apk"
             echo "文件的输出名字是：${outName}"
