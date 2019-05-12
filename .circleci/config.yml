@@ -2,7 +2,7 @@
 version: 2.1
 
 jobs:
-  buildApk:
+  build:
 #    working_directory: code
     docker:
       - image: circleci/android:api-28-alpha
