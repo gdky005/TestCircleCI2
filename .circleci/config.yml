@@ -19,7 +19,7 @@ jobs:
           name: Build Apk
           command: |
             pwd
-            nowTime="$(date +"%Y%m%d%H%M%S")"
+            nowTime=$(date +"%Y%m%d%H%M%S")
             outName="${CIRCLE_PROJECT_REPONAME}_${CIRCLE_BUILD_NUM}_${nowTime}.apk"
             echo "文件的输出名字是：${outName}"
 #      - save_cache:
