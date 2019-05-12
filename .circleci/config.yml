@@ -32,7 +32,8 @@ jobs:
             ls
       - run:
           name: 上传到蒲公英
-          command: curl -F "file=@{$CIRCLE_STAGE}" \
+          command: |
+            curl -F "file=@$CIRCLE_STAGE" \
             -F "uKey=0d4628d290cecf6730f5df1949e1515c" \
             -F "_api_key=808950acaea5f1c000852ad42e87fe0e" \
             http://www.pgyer.com/apiv1/app/upload
