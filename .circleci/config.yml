@@ -12,14 +12,17 @@ jobs:
       - checkout
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+#      - run:
+#          name: Download Dependencies
+#          command: ./gradlew androidDependencies
       - run:
-          name: Download Dependencies
-          command: ./gradlew androidDependencies
+          name: Build Apk
+          command: ./gradlew build
       - save_cache:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-          name: Run Tests
-          command: ./gradlew lint test
+#      - run:
+#          name: Run Tests
+#          command: ./gradlew lint test
 
