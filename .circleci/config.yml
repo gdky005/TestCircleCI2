@@ -24,9 +24,9 @@ jobs:
             #指定输出 apk 名称
 
             #取当前时间字符串添加到文件结尾
-#            now=$(date + "%Y%m%d%H%M%S")
-#            outName="${CIRCLE_WORKING_DIRECTORY}_${CIRCLE_BUILD_NUM}_${now}.apk"
-#            echo "文件的输出名字是：${outName}"
+            now=$(date +"%Y%m%d%H%M%S")
+            outName="${CIRCLE_PROJECT_REPONAME}_${CIRCLE_BUILD_NUM}_${now}.apk"
+            echo "文件的输出名字是：${outName}"
 #      - save_cache:
 #          paths:
 #            - ~/.gradle
