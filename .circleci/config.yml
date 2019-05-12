@@ -16,17 +16,12 @@ jobs:
 #          name: Download Dependencies
 #          command: ./gradlew androidDependencies
       - run:
-          name: 当前目录
-          command: pwd
-      - run:
           name: Build Apk
-          command: ./gradlew build
-      - run:
-          name: 切换到 apk 的目录
-          command: cd /app/build/outputs/apk/debug
-      - run:
-          name: 显示当前文件
-          command: ls
+          command: |
+            pwd
+            ./gradlew build
+            cd /app/build/outputs/apk/debug
+            ls
       - save_cache:
           paths:
             - ~/.gradle
