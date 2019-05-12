@@ -34,7 +34,7 @@ jobs:
       - run:
           name: 上传到蒲公英
           command: |
-            apkName=head -1 APK_NAME.txt
+            apkName=`head -1 APK_NAME.txt`
             echo "保存的路径是：$apkName"
             curl -F "file=@$apkName" \
             -F "uKey=0d4628d290cecf6730f5df1949e1515c" \
