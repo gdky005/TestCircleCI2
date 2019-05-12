@@ -10,20 +10,16 @@ jobs:
       JVM_OPTS: -Xmx3200m
     steps:
       - checkout
-#      - licenses:
-#          - 'android-sdk-license-.+'
-#      - before_install:
-#          - yes | sdkmanager "platforms;android-28"
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
-#      - save_cache:
-#          paths:
-#            - ~/.gradle
-#          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-#      - run:
-#          name: Run Tests
-#          command: ./gradlew lint test
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+          name: Run Tests
+          command: ./gradlew lint test
 
