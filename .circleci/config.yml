@@ -18,6 +18,7 @@ jobs:
       - run:
           name: Build Apk
           command: |
+            ls
             ./gradlew assembleDebug
             pwd
             nowTime=$(date +"%Y%m%d%H%M%S")
