@@ -23,7 +23,7 @@ jobs:
           command: ./gradlew build
       - run:
           name: 切换到 apk 的目录
-          command: cd $CIRCLE_WORKING_DIRECTORY/app/build/outputs/apk/debug
+          command: cd /app/build/outputs/apk/debug
       - run:
           name: 显示当前文件
           command: ls
