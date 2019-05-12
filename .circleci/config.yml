@@ -17,7 +17,10 @@ jobs:
 #          command: ./gradlew androidDependencies
       - run:
           name: Build Apk
-          command: ./gradlew build
+          command:
+            - pwd
+            - ./gradlew build
+            - pwd
       - save_cache:
           paths:
             - ~/.gradle
