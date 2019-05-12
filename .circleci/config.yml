@@ -49,7 +49,7 @@ jobs:
             pgyerPathNew=`head -1 PGYER_NAME.txt`
             echo "读取蒲公英的地址是：$pgyerPathNew"
             DingDing="https://oapi.dingtalk.com/robot/send?access_token=4b824fbe1635a301b9af82dd2565d77ce869d2141c511273f0d5c7644798e835"
-            local DINGDINGURL="https://oapi.dingtalk.com/robot/send?access_token=$DingDing"
+            DINGDINGURL="https://oapi.dingtalk.com/robot/send?access_token=$DingDing"
             curl "${DINGDINGURL}" \
             -H 'Content-Type: application/json' \
             -X POST -d \
