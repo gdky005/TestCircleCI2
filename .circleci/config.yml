@@ -5,11 +5,15 @@ jobs:
   build:
     working_directory: ~/code
     docker:
-      - image: circleci/android:api-25-alpha
+      - image: circleci/android:api-28-alpha
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
       - checkout
+      - licenses:
+          - 'android-sdk-license-.+'
+      - before_install:
+          - yes | sdkmanager "platforms;android-28"
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
