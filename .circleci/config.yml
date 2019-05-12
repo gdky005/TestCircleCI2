@@ -42,10 +42,10 @@ jobs:
                                    http://www.pgyer.com/apiv1/app/upload  | jq . | jq -r '.data.appShortcutUrl'`
             pgyerPath="https://www.pgyer.com/$pgyerPath"
             echo "蒲公英的地址是：$pgyerPath"
+            echo $pgyerPath>PGYER_NAME.txt
       - run:
           name: 发送到钉钉中哦
           command: |
-            echo $pgyerPath>PGYER_NAME.txt
             pgyerPathNew=`head -1 PGYER_NAME.txt`
             echo "读取蒲公英的地址是：$pgyerPathNew"
             DingDing="https://oapi.dingtalk.com/robot/send?access_token=4b824fbe1635a301b9af82dd2565d77ce869d2141c511273f0d5c7644798e835"
