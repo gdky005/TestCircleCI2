@@ -39,8 +39,12 @@ jobs:
             pgyerPath=`curl -F "file=@$apkName" \
                                    -F "uKey=0d4628d290cecf6730f5df1949e1515c" \
                                    -F "_api_key=808950acaea5f1c000852ad42e87fe0e" \
-                                   http://www.pgyer.com/apiv1/app/upload`
+                                   http://www.pgyer.com/apiv1/app/upload  | jq . | jq -r '.data.appShortcutUrl'`
+            pgyerPath="https://www.pgyer.com/$pgyerPath"
             echo "蒲公英的地址是：$pgyerPath"
+            echo $pgyerPath>PGYER_NAME.txt
+            pgyerPathNew=`head -1 PGYER_NAME.txt`
+            echo "读取蒲公英的地址是：$pgyerPathNew"
 
       - save_cache:
           paths:
@@ -49,5 +53,4 @@ jobs:
 #      - run:
 #          name: Run Tests
 #          command: ./gradlew lint test
-#  | jq . | jq -r '.data.appShortcutUrl'
 
