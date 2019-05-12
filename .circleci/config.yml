@@ -21,9 +21,7 @@ jobs:
             pwd
 #            ./gradlew assembleDebug
 #            cd app/build/outputs/apk/debug
-            #指定输出 apk 名称
-
-            #取当前时间字符串添加到文件结尾
+#            指定输出 apk 名称
             now=$(date +"%Y%m%d%H%M%S")
             outName="${CIRCLE_PROJECT_REPONAME}_${CIRCLE_BUILD_NUM}_${now}.apk"
             echo "文件的输出名字是：${outName}"
