@@ -2,13 +2,12 @@
 version: 2.1
 
 jobs:
-  build:
+  buildApk:
 #    working_directory: code
     docker:
       - image: circleci/android:api-28-alpha
     environment:
       JVM_OPTS: -Xmx3200m
-      APK_PATH: ""
     steps:
       - checkout
       - restore_cache:
@@ -31,11 +30,13 @@ jobs:
             sudo mv ${apkPath} ${destPath}
             APK_PATH="$CIRCLE_WORKING_DIRECTORY/$destPath"
             ls
+            echo $APK_PATH>APK_NAME.txt
       - run:
           name: 上传到蒲公英
           command: |
-            echo "保存的路径是：$APK_PATH"
-            curl -F "file=@$APK_PATH" \
+            apkName=head -1 APK_NAME.txt
+            echo "保存的路径是：$apkName"
+            curl -F "file=@$apkName" \
             -F "uKey=0d4628d290cecf6730f5df1949e1515c" \
             -F "_api_key=808950acaea5f1c000852ad42e87fe0e" \
             http://www.pgyer.com/apiv1/app/upload
