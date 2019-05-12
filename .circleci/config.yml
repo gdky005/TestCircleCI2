@@ -22,8 +22,8 @@ jobs:
 #            ./gradlew assembleDebug
 #            cd app/build/outputs/apk/debug
 #            指定输出 apk 名称
-            now=$(date +"%Y%m%d%H%M%S")
-            outName="${CIRCLE_PROJECT_REPONAME}_${CIRCLE_BUILD_NUM}_${now}.apk"
+            nowTime=$(date +"%Y%m%d%H%M%S")
+            outName="${CIRCLE_PROJECT_REPONAME}_${CIRCLE_BUILD_NUM}_${nowTime}.apk"
             echo "文件的输出名字是：${outName}"
 #      - save_cache:
 #          paths:
