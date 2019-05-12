@@ -48,7 +48,7 @@ jobs:
           command: |
             pgyerPathNew=`head -1 PGYER_NAME.txt`
             echo "读取蒲公英的地址是：$pgyerPathNew"
-            DingDing="4b824fbe1635a301b9af82dd2565d77ce869d2141c511273f0d5c7644798e835"
+            DingDing="cb4b91ebe6bea6c6a3bec4b1b573cdd9e072533b955cb2e1f293ec829cc5372a"
             DINGDINGURL="https://oapi.dingtalk.com/robot/send?access_token=$DingDing"
             curl "${DINGDINGURL}" \
             -H 'Content-Type: application/json' \
