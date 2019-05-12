@@ -4,14 +4,14 @@ version: 2.1
 jobs:
   build:
     working_directory: ~/code
-    docker:
-      - image: circleci/android:api-28-alpha
-    environment:
-      JVM_OPTS: -Xmx3200m
+#    docker:
+#      - image: circleci/android:api-28-alpha
+#    environment:
+#      JVM_OPTS: -Xmx3200m
     steps:
-      - checkout
-      - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+#      - checkout
+#      - restore_cache:
+#          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 #      - run:
 #          name: Download Dependencies
 #          command: ./gradlew androidDependencies
@@ -19,18 +19,18 @@ jobs:
           name: Build Apk
           command: |
             pwd
-            ./gradlew build
-            cd app/build/outputs/apk/debug
+#            ./gradlew assembleDebug
+#            cd app/build/outputs/apk/debug
             #指定输出 apk 名称
 
             #取当前时间字符串添加到文件结尾
             now=$(date + "%Y%m%d%H%M%S")
             outName="${CIRCLE_WORKING_DIRECTORY}_${CIRCLE_BUILD_NUM}_${now}.apk"
             echo "文件的输出名字是：${outName}"
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+#      - save_cache:
+#          paths:
+#            - ~/.gradle
+#          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 #      - run:
 #          name: Run Tests
 #          command: ./gradlew lint test
