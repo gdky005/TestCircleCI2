@@ -36,10 +36,11 @@ jobs:
           command: |
             apkName=`head -1 APK_NAME.txt`
             echo "保存的路径是：$apkName"
-            curl -F "file=@$apkName" \
-            -F "uKey=0d4628d290cecf6730f5df1949e1515c" \
-            -F "_api_key=808950acaea5f1c000852ad42e87fe0e" \
-            http://www.pgyer.com/apiv1/app/upload
+            pgyerPath=`curl -F "file=@$apkName" \
+                                   -F "uKey=0d4628d290cecf6730f5df1949e1515c" \
+                                   -F "_api_key=808950acaea5f1c000852ad42e87fe0e" \
+                                   http://www.pgyer.com/apiv1/app/upload  | jq . | jq -r '.data.appShortcutUrl'`
+            echo "蒲公英的地址是：$pgyerPath"
 
       - save_cache:
           paths:
