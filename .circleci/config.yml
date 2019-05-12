@@ -42,9 +42,23 @@ jobs:
                                    http://www.pgyer.com/apiv1/app/upload  | jq . | jq -r '.data.appShortcutUrl'`
             pgyerPath="https://www.pgyer.com/$pgyerPath"
             echo "蒲公英的地址是：$pgyerPath"
+      - run:
+          name: 发送到钉钉中哦
+          command: |
             echo $pgyerPath>PGYER_NAME.txt
             pgyerPathNew=`head -1 PGYER_NAME.txt`
             echo "读取蒲公英的地址是：$pgyerPathNew"
+            DingDing="https://oapi.dingtalk.com/robot/send?access_token=4b824fbe1635a301b9af82dd2565d77ce869d2141c511273f0d5c7644798e835"
+            local DINGDINGURL="https://oapi.dingtalk.com/robot/send?access_token=$DingDing"
+            curl "${DINGDINGURL}" \
+            -H 'Content-Type: application/json' \
+            -X POST -d \
+                '{
+                    "msgtype": "markdown",
+                    "markdown": {
+                    "title":"Android 打包哦",
+                    "text":"### 项目名称: '"$CIRCLE_PROJECT_REPONAME AAA"'  \n > #### 操作人: '"$CIRCLE_PROJECT_USERNAME"' \n > #### 分支: '"$CIRCLE_BRANCH"' \n > [构建地址]('"$CIRCLE_BUILD_URL"') \n >  [下载地址]('"$pgyerPathNew"')"
+                }}'
 
       - save_cache:
           paths:
@@ -53,4 +67,5 @@ jobs:
 #      - run:
 #          name: Run Tests
 #          command: ./gradlew lint test
+
 
